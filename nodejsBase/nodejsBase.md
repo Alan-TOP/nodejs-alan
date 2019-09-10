@@ -1,0 +1,1 @@
+npm init -y 初始化nodejs项目，生成 package.json 文件
