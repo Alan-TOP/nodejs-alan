@@ -14,6 +14,33 @@ nodejs-koa2
 构建基础的koa2框架的nodejs项目
 
 
+nodejs项目的运行与启动
+    node ***.js     node后面跟文件名，直接运行该单个文件；或者单个文件为明确入口的
+
+    框架类的运行与启动：
+    Demo：
+         "scripts":  {
+                "test": "echo \"Error: no test specified\" && exit 1",
+                "dev": "cross-env NODE_ENV=dev nodemon ./bin/www.js",
+                "prd": "cross-env NODE_ENV=production nodemon ./bin/www.js"
+            }
+        cross-env：设置环境变量插件
+        nodemon：Node自动重启工具   nodemon ***.js  类似于node ***.js启动
+    npm run dev
+    npm run后面跟script中设置的变量名；执行后面的脚本
+    npm run是npm run-script的简写，顾名思义就是执行脚本。执行的脚本配置在package.json中的scripts对象。
+
+node --save可以省略掉手动修改package.json的步骤
+    当你为你的模块安装一个依赖模块时，正常情况下你得先安装他们（在模块根目录下npm install module-name），然后连同版本号手动将他们添加到模块配置文件package.json中的依赖里（dependencies）。
+
+    -save和save-dev可以省掉你手动修改package.json文件的步骤。
+    npm install module-name -save 自动把模块和版本号添加到dependencies部分
+    npm install module-name -save-dve 自动把模块和版本号添加到devdependencies部分
+
+    通过这些命令，我们会得到一个新的package.json。然后再做一个试验就懂得了区别：删除node_modules目录，然后执行 npm install --production，可以看到，npm只帮我们自动安装package.json中dependencies部分的模块；如果执行npm install ，则package.json中指定的dependencies和devDependencies都会被自动安装进来。
+
+
+
 NPM 使用介绍
 $ npm -v        版本查看
 2.3.0
