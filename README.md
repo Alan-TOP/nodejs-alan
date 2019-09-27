@@ -72,6 +72,25 @@ npm install -g cnpm --registry=https://registry.npm.taobao.org
 如果你希望具备两者功能，则需要在两个地方安装它或使用 npm link。
 
 
+npm i和npm install的区别
+    最近人用npm i来直接安装模块，但是有会报错，用npm install就不会报错，刚开始百思不得其解，它俩明明是同一个东西
+    后来查npm的帮助指令发现还是没区别，npm i仅仅是npm install的简写：
+    实际使用的区别点主要如下(windows下)： 
+        1. 用npm i安装的模块无法用npm uninstall删除，用npm uninstall i才卸载掉 
+        2. npm i会帮助检测与当前node版本最匹配的npm包版本号，并匹配出来相互依赖的npm包应该提升的版本号 
+        3. 部分npm包在当前node版本下无法使用，必须使用建议版本 
+        4. 安装报错时intall肯定会出现npm-debug.log 文件，npm i不一定
+
+npm -i 与npm install -s与-d的区别
+    npm i module_name  -S   = >  npm install module_name --save    写入到 dependencies 对象
+    npm i module_name  -D   = >  npm install module_name --save-dev   写入到 devDependencies 对象
+    i 是install 的简写
+    -S就是--save的简写
+    -D就是--save-dev 
+    这样安装的包的名称及版本号就会存在package.json的devDependencies这个里面，而--save会将包的名称及版本号放在dependencies里面。
+    那 package.json 文件里面的 devDependencies  和 dependencies 对象有什么区别呢？
+        devDependencies  里面的插件只用于开发环境，不用于生产环境，而 dependencies  是需要发布到生产环境的。
+
 接下来我们使用全局方式安装 express
     $ npm install express -g
     安装过程输出如下内容，第一行输出了模块的版本号及安装位置。
