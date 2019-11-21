@@ -39,5 +39,7 @@ const server = http.createServer((req, res) => {
     }
 })
 
+//http://localhost:8000/a/aa/aaa?a=9&s=5
+//{"method":"GET","url":"/a/aa/aaa?a=9&s=5","path":"/a/aa/aaa","query":{"a":"9","s":"5"}}
 server.listen(8000)
 console.log('OK')

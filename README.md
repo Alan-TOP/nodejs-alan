@@ -17,6 +17,32 @@ nodejs-koa2
 nodejs项目的运行与启动
     node ***.js     node后面跟文件名，直接运行该单个文件；或者单个文件为明确入口的
 
+    常用命令：
+        npm 安装包命令
+            1、局部安装
+                npm install <package_name> 
+                说明 安装到当前项目
+                npm 5x 以后 这个命令等同于npm install --save <package_name> 同时也是会同样写入到依赖 dependencies
+            2、 全局安装 -g
+                npm install -g <package_name> 
+                安装到全局并不会体现到package.json 里面
+            3、安装到生产依赖 --save
+                npm install  <package_name>  --save | -S
+                安装到当前项目，并将包信息写入到dependencies
+            4、安装到开发依赖 --save-dev
+                npm install  <package_name>  --save-dev | -D
+                安装到当前项目 并写入到devDependencies
+                devDependencies与dependencies 的区别:
+                devDependencies 是本地开发时用的依赖项
+                dependencies 是生产环境的依赖项
+        安装依赖包
+            npm install 
+            会将package.json 里面的devDependencies和dependencies下的所有包都会下载到项目的node_modules文件夹下(没有的改文件夹会新建一个)
+        只安装生产依赖
+            npm install --production
+
+
+
     框架类的运行与启动：
     Demo：
          "scripts":  {
@@ -35,9 +61,36 @@ node --save可以省略掉手动修改package.json的步骤
 
     -save和save-dev可以省掉你手动修改package.json文件的步骤。
     npm install module-name -save 自动把模块和版本号添加到dependencies部分
-    npm install module-name -save-dve 自动把模块和版本号添加到devdependencies部分
+    npm install module-name -save-dev 自动把模块和版本号添加到devdependencies部分
 
     通过这些命令，我们会得到一个新的package.json。然后再做一个试验就懂得了区别：删除node_modules目录，然后执行 npm install --production，可以看到，npm只帮我们自动安装package.json中dependencies部分的模块；如果执行npm install ，则package.json中指定的dependencies和devDependencies都会被自动安装进来。
+
+
+
+一个空项目——刚开始创建，无package.json
+
+创建模块
+    创建模块，package.json 文件是必不可少的。我们可以使用 NPM 生成 package.json 文件，生成的文件包含了基本的结果。
+    $ npm init
+    以上的信息，你需要根据你自己的情况输入。在最后输入 "yes" 后会生成 package.json 文件。
+    如果想直接生成默认的package.json 文件，不需要自定义设置，则可以用如下命令直接生成
+    $ npm init -y
+
+一个已存在的项目——其他地方下载，复制到本地，插件均没有安装
+
+    npm install --production，可以看到，npm只帮我们自动安装package.json中dependencies部分的模块；
+    如果执行npm install ，则package.json中指定的dependencies和devDependencies都会被自动安装进来。
+
+
+
+
+
+
+
+
+
+
+
 
 
 
